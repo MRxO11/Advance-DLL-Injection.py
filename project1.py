@@ -8,7 +8,7 @@ LPSTR = POINTER(c_char)
 LPBYTE = POINTER(c_ubyte)
 
 VirtualAllocEx = kernel32.VirtualAllocEx
-VirtualAllocEx.argtypes = (wintypes.HANDLE, wintypes.LPVOID, SIZE_T, wintypes.DWORD. wintypes.DWORD)
+VirtualAllocEx.argtypes = (wintypes.HANDLE, wintypes.LPVOID, SIZE_T, wintypes.DWORD, wintypes.DWORD)
 VirtualAllocEx.restype = wintypes.LPVOID
 
 WriteProcessMemory = kernel32.WriteProcessMemory
@@ -17,7 +17,7 @@ WriteProcessMemory.restype = wintypes.BOOL
 
 class _SECURITY_ATTRIBUTES(Structure):
     _fields_ = [('nLength', wintypes.DWORD),
-                ('lpSecurityDescriptor', wintypes.LPVOID)
+                ('lpSecurityDescriptor', wintypes.LPVOID),
                 ('bInheritHandle', wintypes.BOOL),]
     
 SECURITY_ATTRIBUTES = _SECURITY_ATTRIBUTES
